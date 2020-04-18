@@ -1,0 +1,14 @@
+Package: mscovid
+Title: Multi-state analysis of covid19 hospitalizations (canton de VD)
+Version: 0.0.0.1
+Authors@R: c(
+    person(given = "Jérôme",
+           family = "Pasquier",
+           role = c("aut", "cre"),
+           email = "jerome.pasquier@unisante.ch")
+    )
+Description: Multi-state analysis of covid19 hospitalizations (canton de VD).
+License: GNU General Public Licence
+Encoding: UTF-8
+RoxygenNote: 7.1.0
+Imports: utils, stats, survival, readxl, parallel, mstate, flexsurv, ggplot2

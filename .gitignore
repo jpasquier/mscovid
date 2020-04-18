@@ -1,0 +1,5 @@
+data-raw/
+dev/
+tmp/
+build_package.R
+.RData
