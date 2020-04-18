@@ -6,8 +6,8 @@ library(flexsurv)
 # Data are not provided in the package
 
 # Data
-path <- "data-raw/20.04.14 - Données REDCap hôpitaux anonymisés.xlsx"
-data <- import_data(path, censoring_date = "2020-04-14")
+path <- "data-raw/20.04.17 - Données REDCap hôpitaux anonymisés.xlsx"
+data <- import_data(path)
 rm(path)
 
 # --------------------------- Parametric analysis --------------------------- #
@@ -47,8 +47,8 @@ pred1 <- pred_state_occupancy(
 # ------------------------------ Plot results ------------------------------- #
 
 pdf("tmp/fig_mscovid.pdf")
-ttl <- "multi-state model"
-sttl <- "semi-Markov model fitted with a Weibull distribution"
+ttl <- "Multi-state model"
+sttl <- "Semi-Markov model fitted with a Weibull distribution"
 pi <- FALSE
 for (s in c("all", "hos", "icu", "rest", "death", "recovery")) {
   print(plot_occupancy(pred = pred1, state = s, pi = pi,
@@ -61,6 +61,3 @@ dev.off()
 
 # final_prop
 final_prop <- prop.table(sapply(pred1, function(u) median(u[, ncol(u)])))
-
-# ----------------------------------- DEV ----------------------------------- #
-
