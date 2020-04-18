@@ -1,6 +1,6 @@
 Package: mscovid
 Title: Multi-state analysis of covid19 hospitalizations (canton de VD)
-Version: 0.0.0.1
+Version: 0.0.0.2
 Authors@R: c(
     person(given = "Jérôme",
            family = "Pasquier",

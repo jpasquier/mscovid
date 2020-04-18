@@ -57,7 +57,8 @@ import_data <- function(path, ..., censoring_date = NULL) {
   if (!is.null(censoring_date)) {
     censoring_date <- as.Date(censoring_date)
   } else {
-    censoring_date <- max(c(hos_in, icu_in, icu_out, hos_out), na.rm = TRUE)
+    censoring_date <-
+      with(data, max(c(hos_in, icu_in, icu_out, hos_out), na.rm = TRUE))
   }
 
   # Check data
