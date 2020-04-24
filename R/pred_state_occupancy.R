@@ -31,6 +31,10 @@ pred_state_occupancy <- function(fit, trans, nday, nsim, pars, data,
   #
   t0 <- proc.time()
 
+  # Init gen rand nbr
+  RNGkind("L'Ecuyer-CMRG")
+  set.seed(seed)
+
   # Cumulative data
   daily <- subset(daily_data(data, "wide"),
                   date >= as.Date(start_date), c("date", "cumhos"))
@@ -85,7 +89,6 @@ pred_state_occupancy <- function(fit, trans, nday, nsim, pars, data,
       cbind(sim = rep(i, ninc[i, j]), day = rep(j, ninc[i, j]))
     }))
   }))
-  proc.time() - t0
   newdata <- cbind(
     newdata,
     data[sample.int(nrow(data), nrow(newdata), replace = TRUE),
@@ -96,8 +99,6 @@ pred_state_occupancy <- function(fit, trans, nday, nsim, pars, data,
   profiles <- unique(newdata[c("sex", "age")])
 
   # Simulations of the trajectory of each individual
-  RNGkind("L'Ecuyer-CMRG")
-  set.seed(seed)
   sim <- do.call(rbind, mclapply(1:nrow(profiles), function(i) {
     # Select individuals per profile
     nd <- newdata[newdata$sex == profiles$sex[i] & 
