@@ -1,5 +1,7 @@
 data-raw/
 dev/
+misc/
 tmp/
 build_package.R
+dev_script.R
 .RData
